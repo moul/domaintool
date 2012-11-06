@@ -9,7 +9,7 @@ $(document).ready ->
     socket.on 'domainTool_result', (domain, result) ->
         for container in domainTools_containers
             entry = container.find("[data-domain='#{domain}']")
-            entry.removeClass('info').addClass(result.class)
+            entry.removeClass().addClass(result.class)
             entry.find('.info').html result.state
 
 add_buttons = (container) ->
@@ -27,9 +27,10 @@ $.fn.domainTool_query_multiple = (domains) ->
     add_buttons container
     domainTools_containers.push container
     for domain in domains
-        row = $('<tr></tr>').attr('data-domain', domain).addClass('info')
-        row.append $('<td></td>').addClass('domain').html domain
-        row.append $('<td></td>').addClass('info').html 'in progress...'
-        container.append row
+        if not $("[data-domain='#{domain}']", container).length
+          row = $('<tr></tr>').attr('data-domain', domain).addClass('info')
+          row.append $('<td></td>').addClass('domain').html domain
+          row.append $('<td></td>').addClass('info').html 'in progress...'
+          container.append row
     add_buttons container
     socket.emit 'domainTool_query_multiple', domains
