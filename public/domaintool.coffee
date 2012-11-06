@@ -12,19 +12,10 @@ $(document).ready ->
             entry.removeClass().addClass(result.class)
             entry.find('.info').html result.state
 
-add_buttons = (container) ->
-    row = $('<tr></tr>')
-    column = $('<td></td>').attr('colspan', 2)
-    remove_all =         $('<input />').attr('type', 'button').val('Remove all').addClass('btn btn-primary').click -> container.empty()
-    remove_unavailable = $('<input />').attr('type', 'button').val('Remove unavailable').addClass('btn btn-primary').click -> $('.error', container).remove()
-    column.append remove_all
-    column.append remove_unavailable
-    row.append column
-    container.append row
-
 $.fn.domainTool_query_multiple = (domains) ->
     container = $(@)
-    add_buttons container
+    container.parent().find('.remove-all').click -> container.empty()
+    container.parent().find('.remove-unavailable').click -> container.find('.error').remove()
     domainTools_containers.push container
     for domain in domains
         if not $("[data-domain='#{domain}']", container).length
@@ -32,5 +23,4 @@ $.fn.domainTool_query_multiple = (domains) ->
           row.append $('<td></td>').addClass('domain').html domain
           row.append $('<td></td>').addClass('info').html 'in progress...'
           container.append row
-    add_buttons container
     socket.emit 'domainTool_query_multiple', domains
