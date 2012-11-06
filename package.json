@@ -1,0 +1,23 @@
+{
+  "name": "domaintool",
+  "version": "0.0.1",
+  "description": "Domain name searching tool",
+  "main": "app.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@dev.onouo.com:domaintool"
+  },
+  "keywords": [
+    "tapas",
+    "domain",
+    "whois",
+    "coffee",
+    "coffeescript",
+    "socket.io"
+  ],
+  "author": "Manfred Touron <m@42.am>",
+  "license": "MIT"
+}
