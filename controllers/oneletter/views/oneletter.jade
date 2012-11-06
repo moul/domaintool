@@ -1,38 +1,54 @@
 extends layout
 
 append js_custom
+  script(src="socket.io/socket.io.js", type="text/javascript")
+  != domaintool_assets.js('/domaintool')
   != oneletter_assets.js('/oneletter')
 
+block title
+
 block content
-  form.form.form-horizontal
-    .control-group
-      label.control-label(for="inputLetters") Letters
-      .controls
-        select.letters#inputLetters(multiple)
-          option(disabled) -- Type --
-          option(value="0,1,2,3,4,5,6,7,8,9", selected) Numeric only (0-9)
-          option(value="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z", selected) Alphabetic only (A-Z)
-    .control-group
-      label.control-label(for="inputLetters") Separator
-      .controls
-        select.separator(multiple)
-          option(disabled) -- Separator --
-          option(value="", selected) ""
-          option(value="-", selected) "-"
-    .control-group.warning
-      label.control-label(for="inputLetters") Words
-      .controls
-        textarea.words(rows=5, placeholder="words")
-        span.help-inline One word per line
-    .control-group
-      label.control-label(for="inputLetters") Tlds
-      .controls
-        select.tlds(multiple)
-          option(disabled) -- Tlds --
-          for opt, tld in tlds
-            if opt
-              option(value=tld, selected) ".#{tld}"
-            else
-              option(value=tld) ".#{tld}"
-    .form-actions
-      input.btn.btn-primary(type="submit", value="Go")
+  .container-fluid
+    .row-fluid
+      .span6
+        h1.page-title oneLetter
+        form.form.form-horizontal
+          .control-group
+            label.control-label(for="inputLetters") Letters
+            .controls
+              select.letters#inputLetters(multiple)
+                option(disabled) -- Type --
+                option(value="0,1,2,3,4,5,6,7,8,9", selected) Numeric only (0-9)
+                option(value="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z", selected) Alphabetic only (A-Z)
+          .control-group
+            label.control-label(for="inputLetters") Separator
+            .controls
+              select.separator(multiple)
+                option(disabled) -- Separator --
+                option(value="", selected) ""
+                option(value="-", selected) "-"
+          .control-group.warning
+            label.control-label(for="inputLetters") Words
+            .controls
+              textarea.words(rows=5, placeholder="words") word
+              span.help-inline One word per line
+          .control-group
+            label.control-label(for="inputLetters") Tlds
+            .controls
+              select.tlds(multiple)
+                option(disabled) -- Tlds --
+                for opt, tld in tlds
+                  if opt
+                    option(value=tld, selected) ".#{tld}"
+                  else
+                    option(value=tld) ".#{tld}"
+          .form-actions
+            input.btn.btn-primary(type="submit", value="Go")
+      .span6
+        h1.page-title results
+        table.table.table-bordered#results
+          thead
+            tr
+              th Domain
+              th Info
+          tbody

@@ -11,15 +11,10 @@ $(document).ready ->
                 errors = true
         if errors
             return
-        console.log 42
-        for words in $('.words').val()
-            console.log $.unique words.split /\n/
-         for letters in $('.letters').val()
+        for letters in $('.letters').val()
             for letter in letters.split(',')
                 for separator in $('.separator').val()
-                    for words in $('.words').val()
-                        for word in words.split(/\n/)
-                            for tld in $('.tlds').val()
-                                domains.push "#{letter}#{separator}#{word}.#{tld}"
-        console.log domains
-        return false
+                    for word in $('.words').val().split(/\n/)
+                        for tld in $('.tlds').val()
+                            domains.push "#{letter}#{separator}#{word}.#{tld}"
+        $('#results tbody').domainTool_query_multiple domains
