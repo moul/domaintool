@@ -1,4 +1,29 @@
 extends layout
 
+append js_custom
+  script(src="socket.io/socket.io.js", type="text/javascript")
+  != domaintool_assets.js('/domaintool')
+
 block content
-  h1 salut
+  .container-fluid
+    .row-fluid
+      .span6
+        block query_form
+      .span6
+        h1.page-title results
+        table.table.table-bordered#results
+          thead
+            tr
+              th Domain
+              th Info
+            tr
+              td(colspan="2")
+                input.remove-all.btn.btn-primary(value="Remove all", type="button")
+                input.remove-unavailable.btn.btn-primary(value="Remove unavailable", type="button")
+          tbody
+          tfoot
+            tr
+              td(colspan="2")
+                input.remove-all.btn.btn-primary(value="Remove all", type="button")
+                input.remove-unavailable.btn.btn-primary(value="Remove unavailable", type="button")
+

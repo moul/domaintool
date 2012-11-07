@@ -5,7 +5,7 @@ $(document).ready ->
         errors = false
         for input in [ '.letters', '.separator', '.words', '.tlds' ]
             container = $(input).parent().parent()
-            container.removeClass('error warning success')
+            container.removeClass().addClass('control-group')
             if not $(input).val().length
                 container.addClass 'error'
                 errors = true
