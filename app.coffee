@@ -1,7 +1,6 @@
 #!/usr/bin/env coffee
 
 config = require './config'
-db = require './db'
 tapas = require('tapas') config.tapas
 app = do tapas.app
 
