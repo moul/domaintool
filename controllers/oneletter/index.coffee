@@ -6,3 +6,7 @@ exports.custom.push
     callback: (req, res) ->
         res.render 'oneletter', { tlds: config.tlds }
 
+exports.locals =
+    regions:
+        navbarLinks:
+            '/oneletter': 'One letter'

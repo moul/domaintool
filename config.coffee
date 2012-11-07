@@ -5,6 +5,10 @@ exports.tapas =
         site_name:      'DomainTool'
         author:         'Manfred Touron'
         description:    'Domain tool'
+        use:
+            bootstrap:
+                fluid: false
+                responsive: true
     dbSchema:
         mongodb:
             url: 'mongodb://localhost/entonnoir'
@@ -17,3 +21,4 @@ exports.tlds =
     fr:    false
     "co.uk": false
     us:    false
+
