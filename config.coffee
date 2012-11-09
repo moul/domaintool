@@ -18,7 +18,7 @@ exports.tapas =
 
 exports.tlds =
     com:   true
-    fr:    false
-    "co.uk": false
-    us:    false
+#    fr:    false
+#    "co.uk": false
+#    us:    false
 
