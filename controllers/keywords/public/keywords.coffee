@@ -12,11 +12,11 @@ $(document).ready ->
         if errors
             return
 
-        for worda in $('.wordsa').val().split(/\n/)
+        for worda in $('.wordsa').val().split(/[\n,\ ]+/)
             for separatora in $('.separatora').val()
-                for wordb in $('.wordsb').val().split(/\n/)
+                for wordb in $('.wordsb').val().split(/[\n,\ ]+/)
                     for separatorb in $('.separatorb').val()
-                        for wordc in $('.wordsc').val().split(/\n/)
+                        for wordc in $('.wordsc').val().split(/[\n,\ ]+/)
                             for tld in $('.tlds').val()
                                 domains.push "#{worda}#{separatora}#{wordb}#{separatorb}#{wordc}.#{tld}"
         $('#results tbody').domainTool_query_multiple domains

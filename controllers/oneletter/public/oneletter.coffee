@@ -14,7 +14,7 @@ $(document).ready ->
         for letters in $('.letters').val()
             for letter in letters.split(',')
                 for separator in $('.separator').val()
-                    for word in $('.words').val().split(/\n/)
+                    for word in $('.words').val().split(/[\n,\ ]+/)
                         for tld in $('.tlds').val()
                             domains.push "#{letter}#{separator}#{word}.#{tld}"
         $('#results tbody').domainTool_query_multiple domains
