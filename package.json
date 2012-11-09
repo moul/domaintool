@@ -8,7 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@dev.onouo.com:domaintool"
+    "url": "git@github.com:moul/domaintool"
+  },
+  "dependencies": {
+    "tapas": "0.0.2",
+    "whoisjs": "0.0.4"
   },
   "keywords": [
     "tapas",
