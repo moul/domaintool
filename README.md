@@ -17,7 +17,9 @@ How to use
 ----------
 
 ```bash
-npm install tapas whoisjs
+git clone https://github.com/moul/domaintool.git
+cd domaintool
+npm install
 coffee app.coffee
 ```
 
