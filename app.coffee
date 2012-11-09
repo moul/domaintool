@@ -2,17 +2,23 @@
 
 config = require './config'
 tapas = require('tapas') config.tapas
-app = do tapas.app
+tapas = do tapas.app
 
 whois = require('whoisjs').whois
 who = new whois
 
-app.autodiscover "./controllers"
+try
+    require('./app.local') tapas
+catch e
+    console.log 'test'
 
-app.io.sockets.on 'connection', (socket) ->
+tapas.autodiscover "./controllers"
+
+tapas.io.sockets.on 'connection', (socket) ->
     console.log '[+] new socket.io user !'
 
     socket.on 'domainTool_query_multiple', (domains) ->
+        console.dir domains
         for domain in domains
             do (->
                 _domain = domain
@@ -35,4 +41,4 @@ app.io.sockets.on 'connection', (socket) ->
                     socket.emit 'domainTool_result', _domain, info
                     )
 
-do app.run
+do tapas.run
