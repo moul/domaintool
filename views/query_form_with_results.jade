@@ -4,6 +4,10 @@ append js_custom
   script(src="socket.io/socket.io.js", type="text/javascript")
   != domaintool_assets.js('/domaintool')
 
+append head
+  - console.dir(locals)
+  meta(name="ioport", value=config.port)
+
 block content
   .container-fluid
     .row-fluid

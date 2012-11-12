@@ -1,5 +1,6 @@
 exports.tapas =
     port: 9159
+    bindaddress: 'dev.onouo.com'
     debug: true
     locals:
         site_name:      'DomainTool'
@@ -9,12 +10,7 @@ exports.tapas =
             bootstrap:
                 fluid: false
                 responsive: true
-    dbSchema:
-        mongodb:
-            url: 'mongodb://localhost/entonnoir'
-        #redis2:
-        #    port: 6379
-        #memory: {}
+
 
 exports.tlds =
     com:   true

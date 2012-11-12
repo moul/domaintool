@@ -1,0 +1,28 @@
+extends query_form_with_results
+
+append js_custom
+  != twittertrends_assets.js('/twittertrends')
+
+append css_custom
+  != twittertrends_assets.css('/twittertrends')
+
+block query_form
+  h1.page-title Twitter Trends
+  form.form
+    .control-group
+      label.control-label(for="trends") Trends
+      .controls
+        select.trends(multiple, size=11)
+          option(disabled) -- Loading... --
+    .control-group
+      label.control-label(for="inputLetters") Tlds
+      .controls
+        select.tlds(multiple)
+          option(disabled) -- Tlds --
+          for opt, tld in tlds
+            if opt
+              option(value=tld, selected) ".#{tld}"
+            else
+              option(value=tld) ".#{tld}"
+    .form-actions
+      input.btn.btn-primary(type="submit", value="Go")
