@@ -1,16 +1,51 @@
 $(document).ready ->
-    update_trends = ->
-        console.log 'test'
+
+    delay = (->
+        timer = 0
+        return (callback, ms) ->
+            clearTimeout timer
+            timer = setTimeout callback, ms
+        )()
+
+    yahooapikey = $('meta[name="yahooapikey"]').attr('value')
+
+    if yahooapikey?.length > 10
+        $('#location').keyup ->
+            delay (->
+                location = $('#location').val()
+                url = "http://where.yahooapis.com/v1/places.q('#{location}')?appid=#{yahooapikey}"
+                $('.trends').empty().append $('<option/>').attr('disabled', 'disabled').html('-- Loading... --')
+                $.ajax
+                    url: url
+                    dataType: "json"
+                    success: (data) ->
+                        console.dir data
+                        if data.places.count
+                            $('.trends').parent().parent().removeClass().addClass('control-group success')
+                            update_trends data.places.place[0].woeid
+                        else
+                            $('.trends').parent().parent().removeClass().addClass('control-group error')
+                            $('.trends').empty().append $('<option/>').attr('disabled', 'disabled').html('-- Location not found --')
+            ), 700
+    else
+        $('#location').attr('disabled', 'disabled')
+
+    update_trends = (woeid = 1) ->
         $.ajax
-            url: 'https://api.twitter.com/1/trends/1.json?callback=?'
-            dataType: 'json'
+            url: "https://api.twitter.com/1/trends/#{woeid}.json?callback=?"
+            dataType: 'jsonp'
+            timeout: 1500
             success: (data) ->
+                console.log 'success'
+                console.log data
                 $('select.trends').empty().append $('<option/>').attr('disabled','disabled').html('-- Trends --')
                 for trend in data[0].trends
                     $('select.trends').append $('<option/>').attr('selected', 'selected').html(trend.name)
-        console.log 'test'
+            error: (data) ->
+                $('.trends').parent().parent().removeClass().addClass('control-group error')
+                $('.trends').empty().append $('<option/>').attr('disabled', 'disabled').html('-- Location not found --')
 
-    do update_trends
+    update_trends 1
 
     $('form').submit (e) ->
         do e.preventDefault
