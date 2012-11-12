@@ -19,7 +19,6 @@ $(document).ready ->
                     url: url
                     dataType: "json"
                     success: (data) ->
-                        console.dir data
                         if data.places.count
                             $('.trends').parent().parent().removeClass().addClass('control-group success')
                             update_trends data.places.place[0].woeid
@@ -36,8 +35,6 @@ $(document).ready ->
             dataType: 'jsonp'
             timeout: 1500
             success: (data) ->
-                console.log 'success'
-                console.log data
                 $('select.trends').empty().append $('<option/>').attr('disabled','disabled').html('-- Trends --')
                 for trend in data[0].trends
                     $('select.trends').append $('<option/>').attr('selected', 'selected').html(trend.name)
