@@ -13,18 +13,25 @@ $(document).ready ->
         $('#location').keyup ->
             delay (->
                 location = $('#location').val()
-                url = "http://where.yahooapis.com/v1/places.q('#{location}')?appid=#{yahooapikey}"
                 $('.trends').empty().append $('<option/>').attr('disabled', 'disabled').html('-- Loading... --')
-                $.ajax
-                    url: url
-                    dataType: "json"
-                    success: (data) ->
-                        if data.places.count
-                            $('.trends').parent().parent().removeClass().addClass('control-group success')
-                            update_trends data.places.place[0].woeid
-                        else
+                if location.length
+                    url = "http://where.yahooapis.com/v1/places.q('#{location}')?appid=#{yahooapikey}"
+                    $.ajax
+                        url: url
+                        dataType: "json"
+                        success: (data) ->
+                            if data.places.count
+                                $('.trends').parent().parent().removeClass().addClass('control-group success')
+                                update_trends data.places.place[0].woeid
+                            else
+                                $('.trends').parent().parent().removeClass().addClass('control-group error')
+                                $('.trends').empty().append $('<option/>').attr('disabled', 'disabled').html('-- Location not found --')
+                        error: (data) ->
+                            console.log 'error', data
                             $('.trends').parent().parent().removeClass().addClass('control-group error')
                             $('.trends').empty().append $('<option/>').attr('disabled', 'disabled').html('-- Location not found --')
+                else
+                    update_trends 1
             ), 700
     else
         $('#location').attr('disabled', 'disabled')
