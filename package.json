@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "tapas": "0.0.2",
-    "whoisjs": "0.0.4"
+    "whoisjs": "0.0.5"
   },
   "keywords": [
     "tapas",
