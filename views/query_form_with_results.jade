@@ -2,6 +2,7 @@ extends layout
 
 append js_custom
   script(src="socket.io/socket.io.js", type="text/javascript")
+  != domaintool_assets.js('/garlic-0.0.6.min')
   != domaintool_assets.js('/domaintool')
 
 append head
