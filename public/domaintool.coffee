@@ -38,6 +38,7 @@ window.cleanName = (s) ->
     r = r.replace(new RegExp(/æ/g),"ae")
     r = r.replace(new RegExp(/ç/g),"c")
     r = r.replace(new RegExp(/[èéêë]/g),"e")
+    r = r.replace(new RegExp(/[ğ]/g),"g")
     r = r.replace(new RegExp(/[ìíîïı]/g),"i")
     r = r.replace(new RegExp(/ñ/g),"n")
     r = r.replace(new RegExp(/[òóôõö]/g),"o")
