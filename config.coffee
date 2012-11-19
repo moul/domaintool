@@ -10,11 +10,11 @@ exports.tapas =
             bootstrap:
                 fluid: false
                 responsive: true
-
+    yahooapikey: null
 
 exports.tlds =
     com:   true
-#    fr:    false
+    fr:    false
 #    "co.uk": false
 #    us:    false
 

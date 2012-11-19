@@ -8,7 +8,12 @@ append css_custom
 
 block query_form
   h1.page-title Twitter Trends
-  form.form
+  form.form(data-persist="garlic")
+    .control-group
+      label.control-label(for="trends") Location
+      .controls
+        input(type="text", placeholder="Paris, France")#location
+        span.help-block Worldwide if empty
     .control-group
       label.control-label(for="trends") Trends
       .controls

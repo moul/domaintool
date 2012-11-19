@@ -1,0 +1,31 @@
+extends query_form_with_results
+
+append js_custom
+  != pronounceable_assets.js('/pronounceable')
+
+append css_custom
+  != pronounceable_assets.css('/pronounceable')
+
+block query_form
+  h1.page-title Pronounceable
+  form.form(data-persist="garlic")
+    .control-group.warning
+      label.control-label(for="length") Length
+      .controls
+        input.length(value=5, type="number", max=62, min=1)#length
+    .control-group
+      label.control-label(for="amount") Amount
+      .controls
+        input.length(value=10, type="number", max=20, min=1)#amount
+    .control-group
+      label.control-label(for="tlds") Tlds
+      .controls
+        select.tlds(multiple)#tlds
+          option(disabled) -- Tlds --
+          for opt, tld in tlds
+            if opt
+              option(value=tld, selected) ".#{tld}"
+            else
+              option(value=tld) ".#{tld}"
+    .form-actions
+      input.btn.btn-primary(type="submit", value="Go")
