@@ -12,7 +12,7 @@ block query_form
     .control-group.warning
       label.control-label(for="inputLetters") Words A
       .controls
-        textarea.wordsa(rows=5, placeholder="words")
+        textarea.wordsa(rows=5, placeholder="words") #{config.keywords_default_wordsa}
         span.help-inline One word per line
     .control-group
       label.control-label(for="inputLetters") Separator A-B
@@ -24,7 +24,7 @@ block query_form
     .control-group
       label.control-label(for="inputLetters") Words B
       .controls
-        textarea.wordsb(rows=5, placeholder="words")
+        textarea.wordsb(rows=5, placeholder="words") #{config.keywords_default_wordsb}
         span.help-inline One word per line
     .control-group
       label.control-label(for="inputLetters") Separator B-C
@@ -36,7 +36,7 @@ block query_form
     .control-group
       label.control-label(for="inputLetters") Words C
       .controls
-        textarea.wordsc(rows=5, placeholder="words")
+        textarea.wordsc(rows=5, placeholder="words") #{config.keywords_default_wordsc}
         span.help-inline One word per line
     .control-group
       label.control-label(for="inputLetters") Tlds

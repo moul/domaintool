@@ -10,14 +10,17 @@ exports.tapas =
                 fluid: false
                 responsive: true
     yahooapikey: null
+    keywords_default_wordsa: 'the one a '
+    keywords_default_wordsb: ''
+    keywords_default_wordsc: 'box '
 
 exports.tlds =
     com:     true
     net:     false
     org:     false
-    info:    false
-    eu:      false
+    #info:    false
+    #eu:      false
     fr:      false
-    "co.uk": false
-#    us:    false
+    #"co.uk": false
+    #us:    false
 
