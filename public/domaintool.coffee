@@ -2,7 +2,7 @@ socket = false
 domainTools_containers = []
 
 $(document).ready ->
-    socket = io.connect window.location.hostname, { port: parseInt $('meta[name="ioport"]').attr('value') }
+    socket = io.connect "http://#{window.location.hostname}", { port: parseInt $('meta[name="ioport"]').attr('value') }
     socket.on 'connect', -> console.log 'on connect'
     socket.on 'reconnect', -> console.log 'on reconnect'
     socket.on 'disconnect', -> console.log 'on disconnect'

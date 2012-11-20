@@ -32,7 +32,7 @@ tapas.io.sockets.on 'connection', (socket) ->
                         info.state = "available"   if info.available
                         info.state = "unavailable" if info.unavailable
                         info.state = "timeout"     if info.timeout
-                        info.state = "error"       if info.error
+                        info.state = "error (quota ?)"       if info.error
                         info.state ||= "unknown"
                         info.class = "success"     if info.available
                         info.class = "error"       if info.unavailable
