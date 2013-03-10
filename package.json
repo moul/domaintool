@@ -1,6 +1,6 @@
 {
   "name": "domaintool",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Domain name searching tool",
   "main": "app.coffee",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git@github.com:moul/domaintool"
   },
   "dependencies": {
-    "tapas": "0.0.3",
+    "tapas": "0.2.1",
     "whoisjs": "0.0.5"
   },
   "keywords": [
