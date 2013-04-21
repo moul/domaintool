@@ -25,3 +25,7 @@ exports.tlds =
   #"co.uk": false
   #us:  false
 
+try
+    require('./config.local') exports
+catch e
+    console.log ''
