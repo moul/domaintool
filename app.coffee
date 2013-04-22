@@ -41,6 +41,7 @@ tapas.io.sockets.on 'connection', (socket) ->
             info.class ||= "unknown"
             info.raw = response.raw
             socket.emit 'domainTool_result', _domain, info
+            console.log _domain, info.state
             )
 
 do tapas.run
