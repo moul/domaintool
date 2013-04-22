@@ -26,18 +26,18 @@ tapas.io.sockets.on 'connection', (socket) ->
           who.query _domain, (response) ->
             info =
               available:   do response.available
-              error:     do response.error
+              error:       do response.error
               unavailable: do response.unavailable
-              timeout:   do response.timeout
-            info.state = "available"   if info.available
-            info.state = "unavailable" if info.unavailable
-            info.state = "timeout"   if info.timeout
-            info.state = "error (quota ?)"     if info.error
+              timeout:     do response.timeout
+            info.state = "available"       if info.available
+            info.state = "unavailable"     if info.unavailable
+            info.state = "timeout"         if info.timeout
+            info.state = "error (quota ?)" if info.error
             info.state ||= "unknown"
-            info.class = "success"   if info.available
-            info.class = "error"     if info.unavailable
-            info.class = "warning"   if info.timeout
-            info.class = "warning"   if info.error
+            info.class = "success"         if info.available
+            info.class = "error"           if info.unavailable
+            info.class = "warning"         if info.timeout
+            info.class = "warning"         if info.error
             info.class ||= "unknown"
             info.raw = response.raw
             socket.emit 'domainTool_result', _domain, info
