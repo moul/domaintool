@@ -11,12 +11,14 @@ RUN npm install -g node-dev coffee-script
 
 
 ADD . /app
+RUN chmod +x /app/run.sh
 RUN cd /app; npm install
 RUN chown -R nobody /app
 
 USER nobody
 WORKDIR /app
-CMD ["/usr/bin/node-dev", "app.coffee"] 
+CMD ["/app/run.sh"]
+
 
 
 EXPORT 9159

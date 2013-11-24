@@ -1,5 +1,8 @@
 #!/bin/sh
 
-set -x
+#set -x
 
-while true; do export HOST=dev.onouo.com; node-dev app.coffee ; sleep 1; done
+while true; do
+    node-dev app.coffee
+    sleep 1
+done
