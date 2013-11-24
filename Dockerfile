@@ -12,6 +12,7 @@ RUN npm install -g node-dev coffee-script
 
 ADD . /app
 RUN cd /app; npm install
+RUN chown -R nobody /app
 
 USER nobody
 WORKDIR /app
