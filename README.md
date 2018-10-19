@@ -1,6 +1,8 @@
 DomainTool
 ==========
 
+[![GuardRails badge](https://badges.production.guardrails.io/moul/domaintool.svg)](https://www.guardrails.io)
+
 by Manfred Touron
 
 A blazing fast domain names finder.
